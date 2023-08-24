@@ -1,8 +1,10 @@
 const socket = io();
 
-const txtNombre = document.querySelector('#txtNombre')
-const btnEnviar = document.querySelector('#btnEnviar');
-const btnDia = document.querySelector('#btnDia');
+const btnPantalla = document.querySelector('#btn-pantalla-principal')
+const btnTicket = document.querySelector('#btn-generar-ticket')
+const btnEscritorio = document.querySelector('#btn-generar-escritorio')
+const btnSiguienteTicket = document.querySelector('#btn-siguiente-ticket')
+
 
 socket.on('connect', () => {
     console.log("En linea");
@@ -15,6 +17,24 @@ socket.on('disconnect', () => {
 socket.on('saluden', (data) => {
     console.log(data);
 
+});
+
+
+btnTicket.addEventListener('click', () => {
+    // Abre una nueva pestaña y carga el contenido de "escritorio.html"
+    const nuevaPestana = window.open('ticket.html', '_blank');
+});
+
+
+btnPantalla.addEventListener('click', () => {
+    // Abre una nueva pestaña y carga el contenido de "escritorio.html"
+    const nuevaPestana = window.open('pantalla.html', '_blank');
+});
+
+
+btnEscritorio.addEventListener('click', () => {
+    // Abre una nueva pestaña y carga el contenido de "escritorio.html"
+    const nuevaPestana = window.open('escritorio.html', '_blank');
 });
 
 btnEnviar.addEventListener('click', () => {
