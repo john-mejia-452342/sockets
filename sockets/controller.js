@@ -4,7 +4,7 @@ const controllerSockets = (socket) => {
     socket.on('saludar', async (mensaje, callback) => {
         console.log(`hola ${mensaje.nombre}`);
         callback( "LLego el mensaje" );
-        socket.broadcast.emit( 'saluden', `Todos aluden a ${mensaje.nombre}`);
+        socket.broadcast.emit( 'saluden', `Todos saluden a ${mensaje.nombre}`);
     });
     socket.on('devuelvaFecha',async(callback)=>{
         callback(new Date())
