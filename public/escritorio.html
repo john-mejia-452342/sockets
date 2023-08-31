@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <title>Escritorio</title>
+    <title id="escritorio-numero">Escritorio</title>
 </head>
 
 <body>
@@ -27,13 +27,15 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const numeroEscritorioElement = document.getElementById('numero-escritorio');
-            
+            const escritorioNumero = document.getElementById('escritorio-numero');
+             
             // Obtener los parámetros de la URL
             const urlParams = new URLSearchParams(window.location.search);
             const numeroEscritorio = urlParams.get('escritorio');
 
             if (numeroEscritorio !== null) {
                 numeroEscritorioElement.textContent = `Escritorio ${numeroEscritorio}`;
+                escritorioNumero.textContent = `Escritorio ${numeroEscritorio}`
             }
 
             // Resto de tu código
@@ -46,14 +48,45 @@
         padding: 0;
     }
 
-    .container{
+    body {
+        background-color: #f0f0f0;
+        /* Color de fondo */
+    }
+
+    .container {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
     }
 
-    .container-escritorio h3,h4{
-        margin: 10px;
+    .container-escritorio {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #ffffff;
+        padding: 3%;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     }
+
+    .container-escritorio h3 {
+        color: #0d6efd;
+    }
+
+    .container-escritorio h4 {
+        color: #333333;
+        margin: 10px 0;
+    }
+
+    #btn-siguiente-ticket {
+        background-color: #0d6efd;
+        border: none;
+    }
+
+    #btn-siguiente-ticket:hover {
+        background-color: #095cbf;
+    }
+
 </style>

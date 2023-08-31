@@ -43,6 +43,7 @@ const escritorios = new Set(); // Conjunto para almacenar los escritorios utiliz
     document.addEventListener('DOMContentLoaded', () => {
         const inputEscritorio = document.querySelector('#inputNumeroEscritorio');
         const btnGenerarEscritorio = document.getElementById('btn-generar-escritorio');
+        const errorEscritorio = document.getElementById('errorEscritorio')
 
         btnGenerarEscritorio.addEventListener('click', () => {
             const numeroEscritorio = parseInt(inputEscritorio.value);
@@ -52,8 +53,15 @@ const escritorios = new Set(); // Conjunto para almacenar los escritorios utiliz
     
                 // Agregar el número de escritorio como parámetro en la URL de la página "Escritorio"
                 window.open(`escritorio.html?escritorio=${numeroEscritorio}`, '_blank');
+                console.log(escritorios)
             } else {
-                alert('Número de escritorio inválido o ya utilizado.');
+                if(inputEscritorio.value.trim() === ""){
+                    errorEscritorio.textContent = 'Por favor digite el numero del escritorio'
+                }else if(inputEscritorio.value <=0){
+                    errorEscritorio.textContent = 'El numero del escritorio debe ser mayor que 0'
+                }else if(escritorios.has(numeroEscritorio)){
+                    errorEscritorio.textContent = 'Este escritorio ya esta en uso'
+                }
             }
         });
     });

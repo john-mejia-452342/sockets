@@ -17,7 +17,11 @@
             <button type="button" class="btn btn-primary" id="btn-generar-ticket">Generar Tickets</button>
         </div>
         <div class="container-escritorio">
-            <input type="number" placeholder="Numero de escritorio" id="inputNumeroEscritorio">
+            <input type="number" required="" autocomplete="off" id="inputNumeroEscritorio">
+            <label for="numero-de-escritorio">Numero de escritorio</label>
+            <div class="errorEscritorio">
+                <h3 id="errorEscritorio"></h3>
+            </div>
             <button type="button" class="btn btn-primary" id="btn-generar-escritorio">Enviar</button>
         </div>
     </div>
@@ -44,24 +48,73 @@
         justify-content: space-between;
 
     }
-    .container-citas button{
+
+    .container-citas button {
         margin-top: 10px;
     }
 
-    .container-escritorio{
+    .container-escritorio {
         display: flex;
+        align-items: baseline;
         flex-direction: column;
     }
 
-    .container-escritorio input{
-        border: 1px solid black;
-        border-radius: 5px;
+    .container-escritorio button {
+        margin-top: 10px;
+        width: 100px;
+    }
+
+    .container-escritorio {
+        font-family: 'Segoe UI', sans-serif;
+        margin: 1em 0 1em 0;
+        width:300px;
+        position: relative;
+    }
+
+    .container-escritorio input {
+        font-size: 100%;
+        padding: 0.8em;
+        outline: none;
+        border: 2px solid rgb(200, 200, 200);
+        background-color: transparent;
+        border-radius: 20px;
         width: 400px;
     }
 
-    .container-escritorio button{
-        margin-top: 10px;
-        width: 100px;
+    .container-escritorio label {
+        font-size: 100%;
+        position: absolute;
+        left: 0;
+        padding: 0.8em;
+        margin-left: 0.5em;
+        pointer-events: none;
+        transition: all 0.3s ease;
+        color: rgb(100, 100, 100);
+    }
+
+    .container-escritorio :is(input:focus, input:valid)~label {
+        transform: translateY(-50%) scale(.9);
+        margin: 0em;
+        margin-left: 1.3em;
+        padding: 0.4em;
+        background-color: #ffffff;
+        border-radius: 12px;
+    }
+
+    .container-escritorio :is(input:focus, input:valid) {
+        border-color: rgb(150, 150, 200);
+    }
+
+    #errorEscritorio{
+        margin-top: 2px;
+        font-size: 15px;
+        color: red;
+    }
+    .errorEscritorio{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
     }
 </style>
 
