@@ -3,11 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pantalla</title>
+    <title>Ticket</title>
 </head>
 <body>
     <div class="container">
-        
+        <h1>Generar Ticket</h1>
+        <h3 id="ticket-numero">Ticket número 0</h3>
+        <button id="generar-ticket">Generar Ticket</button>
+        <ul id="ticket-list"></ul>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ticketNumeroElement = document.getElementById('ticket-numero');
+            const generarTicketButton = document.getElementById('generar-ticket');
+            const ticketList = document.getElementById('ticket-list');
+            let numeroTicket = 0;
+
+            // Recuperar tickets almacenados en localStorage si existen
+            const storedTickets = JSON.parse(localStorage.getItem('tickets')) || [];
+
+
+            generarTicketButton.addEventListener('click', () => {
+                numeroTicket++;
+                ticketNumeroElement.textContent = `Ticket número ${numeroTicket}`;
+
+                // Almacenar el nuevo ticket en localStorage
+                storedTickets.push(numeroTicket);
+                localStorage.setItem('tickets', JSON.stringify(storedTickets));;
+            });
+        });
+    </script>
 </body>
 </html>

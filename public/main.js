@@ -32,10 +32,34 @@ btnPantalla.addEventListener('click', () => {
 });
 
 
-btnEscritorio.addEventListener('click', () => {
-    // Abre una nueva pestaña y carga el contenido de "escritorio.html"
-    const nuevaPestana = window.open('escritorio.html', '_blank');
-});
+// btnEscritorio.addEventListener('click', () => {
+//     // Abre una nueva pestaña y carga el contenido de "escritorio.html"
+//     const nuevaPestana = window.open('escritorio.html', '_blank');
+// });
+
+
+const escritorios = new Set(); // Conjunto para almacenar los escritorios utilizados
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const inputEscritorio = document.querySelector('#inputNumeroEscritorio');
+        const btnGenerarEscritorio = document.getElementById('btn-generar-escritorio');
+
+        btnGenerarEscritorio.addEventListener('click', () => {
+            const numeroEscritorio = parseInt(inputEscritorio.value);
+    
+            if (numeroEscritorio > 0 && !isNaN(numeroEscritorio) && !escritorios.has(numeroEscritorio)) {
+                escritorios.add(numeroEscritorio);
+    
+                // Agregar el número de escritorio como parámetro en la URL de la página "Escritorio"
+                window.open(`escritorio.html?escritorio=${numeroEscritorio}`, '_blank');
+            } else {
+                alert('Número de escritorio inválido o ya utilizado.');
+            }
+        });
+    });
+
+
+
 
 btnEnviar.addEventListener('click', () => {
     const mensaje = {
